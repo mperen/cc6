@@ -1,3 +1,12 @@
-// var angular = require('angular');
+var angular = require('angular');
+var angularRoute = require('angular-route');
 
-console.log('Hola');
+(function(){
+
+angular.module('app', ['ngRoute']);
+
+})();
+
+require('./routes/angular-routes');
+
+require('./controllers/testController');

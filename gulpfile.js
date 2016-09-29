@@ -24,6 +24,17 @@ gulp.task('angular', function(cb){
 });
 
 
+gulp.task('views', function(cb){
+    pump([
+        gulp.src('./components/views/**/*.html'),
+        gulp.dest('.tmp/public/views')
+    ],cb);
+});
+
+gulp.task('views:watch', function(){
+    return watch('./components/views/**/*.html', ['views']);
+})
+
 
 gulp.task('sass', function(cb) {
     pump([
@@ -39,4 +50,4 @@ gulp.task('sass:watch', function(){
 
 
 //MAIN TASK
-gulp.task('default', ['sails', 'sass', 'sass:watch', 'angular']);
+gulp.task('default', ['sails', 'sass', 'sass:watch', 'angular', 'views', 'views:watch']);
