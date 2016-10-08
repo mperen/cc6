@@ -1,6 +1,5 @@
 var gulp            = require('gulp'),
     watch           = require('gulp-watch')
-    inject          = require('gulp-inject')
     webpack         = require('webpack-stream'),
     pump            = require('pump'),
     sass            = require('gulp-sass');
@@ -23,18 +22,10 @@ gulp.task('angular', function(cb){
     cb);
 });
 
-
-gulp.task('views', function(cb){
-    pump([
-        gulp.src('./components/views/**/*.html'),
-        gulp.dest('.tmp/public/views')
-    ],cb);
-});
-
 gulp.task('views:watch', function(){
-    return watch('./components/views/**/*.html', ['views']);
+    return watch('./components/views/**/*.html', { ignoreInitial: false })
+        .pipe(gulp.dest('.tmp/public/views'));
 })
-
 
 gulp.task('sass', function(cb) {
     pump([
@@ -44,10 +35,18 @@ gulp.task('sass', function(cb) {
     ], cb);
 });
 
+gulp.task('sass:materialize', function(cb){
+    pump([
+        gulp.src('./node_modules/materialize-css/sass/materialize.scss', {ignoreInitial: false}),
+        sass().on('error', sass.logError),
+        gulp.dest('.tmp/public/css/styles')
+    ], cb);
+})
+
 gulp.task('sass:watch', function(){
     return watch('./assets/**/*.scss', ['sass']);
 });
 
 
 //MAIN TASK
-gulp.task('default', ['sails', 'sass', 'sass:watch', 'angular', 'views', 'views:watch']);
+gulp.task('default', ['sails', 'sass', 'sass:watch', 'angular', 'views:watch', 'sass:materialize']);

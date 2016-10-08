@@ -1,5 +1,6 @@
 var angular = require('angular');
 var angularRoute = require('angular-route');
+var materialize = require('materialize-css');
 
 (function(){
 
