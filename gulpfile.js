@@ -35,18 +35,27 @@ gulp.task('sass', function(cb) {
     ], cb);
 });
 
-gulp.task('sass:materialize', function(cb){
-    pump([
-        gulp.src('./node_modules/materialize-css/sass/materialize.scss', {ignoreInitial: false}),
-        sass().on('error', sass.logError),
-        gulp.dest('.tmp/public/css/styles')
-    ], cb);
-})
-
 gulp.task('sass:watch', function(){
     return watch('./assets/**/*.scss', ['sass']);
 });
 
+gulp.task('material:css', function(cb){
+    pump([
+        gulp.src(['./node_modules/bootstrap/dist/css/bootstrap.css', './node_modules/bootstrap/dist/css/bootstrap.css.map'], {ignoreInitial: false}),
+        gulp.dest('.tmp/public/css/styles')    
+    ],
+    cb);
+})
+
+gulp.task('material:js', function(cb){
+    pump([
+        gulp.src(['./node_modules/bootstrap/dist/js/bootstrap.js'], {ignoreInitial: false}),
+        gulp.dest('.tmp/public/js')    
+    ],
+    cb);
+})
+
+
 
 //MAIN TASK
-gulp.task('default', ['sails', 'sass', 'sass:watch', 'angular', 'views:watch', 'sass:materialize']);
+gulp.task('default', ['sails', 'sass', 'sass:watch', 'angular', 'views:watch', 'material:css', 'material:js']);
