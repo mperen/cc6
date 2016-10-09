@@ -1,0 +1,28 @@
+.login-background {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    background-image: url('../../images/login.jpg');
+}
+
+.login-container {
+    margin-top: 55%;
+    background: rgba(243, 243, 243, .6);
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+
+    h3 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    label {
+        vertical-align: middle;
+    }
+}
+
+.row {
+    margin-right: 0 !important; 
+}
