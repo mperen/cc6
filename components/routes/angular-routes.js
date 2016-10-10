@@ -5,10 +5,15 @@
                 .when("/", {
                     templateUrl : "../views/main.html"
                 })
-                .when("/test", {
+                .when("/registro", {
                     templateUrl : "../views/user/add_user.html",
-                    controller: 'TestController',
-                    controllerAs: 'testCtrl'
+                    controller: 'RegistroController',
+                    controllerAs: 'registroCtrl'
+                })
+                .when("/dashboard", {
+                    templateUrl: "../views/dashboard/dashboard.html",
+                    controller: 'DashboardController',
+                    controllerAs: 'dashCtrl'
                 })
         })
 })();

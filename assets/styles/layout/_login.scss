@@ -23,6 +23,16 @@
     }
 }
 
+// BOOTSTRAP OVERRIDE
+
+.btn {
+    border-radius: 0px !important;
+}
+
+.form-control {
+    border-radius: 0px !important;
+}
+
 .row {
     margin-right: 0 !important; 
 }

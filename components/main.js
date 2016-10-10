@@ -10,4 +10,5 @@ angular.module('app', ['ngRoute']);
 
 require('./routes/angular-routes');
 
-require('./controllers/testController');
+require('./controllers/registroController');
+require('./controllers/dashboardController');
