@@ -1,0 +1,11 @@
+$bgDefault      : #2274a5;
+
+.nav-logo {
+    width: 40px;
+    height: 40px;
+}
+
+.navbar-default {
+    background-color: $bgDefault !important;
+    border-color: $bgDefault !important;
+}
