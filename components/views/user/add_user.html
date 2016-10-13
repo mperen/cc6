@@ -5,14 +5,14 @@
         
         <h3>REGISTRO</h3>
         
-        <form class="form-horizontal">
+        <form class="form-horizontal" ng-submit="registroCtrl.registroUsuario()">
           
           <div class="form-group">
             <label class="col-md-offset-2 col-md-3">
               Correo
             </label>
             <div class="col-md-5">
-              <input class="form-control" type="email" />
+              <input class="form-control" type="email" ng-model='registroCtrl.newUser.correo'/>
             </div>
           </div>
 
@@ -21,7 +21,7 @@
               Usuario
             </label>
             <div class="col-md-5">
-              <input class="form-control" type="text" />
+              <input class="form-control" type="text" ng-model='registroCtrl.newUser.usuario'/>
             </div>
           </div>
 
@@ -30,7 +30,7 @@
               Contraseña
             </label>
             <div class="col-md-5">
-              <input class="form-control" type="password" />
+              <input class="form-control" type="password" ng-model='registroCtrl.newUser.password'/>
             </div>
           </div>
 
@@ -39,7 +39,7 @@
               Direccion
             </label>
             <div class="col-md-5">
-              <input class="form-control" type="text" />
+              <input class="form-control" type="text" ng-model='registroCtrl.newUser.direccion'/>
             </div>
           </div>
 
@@ -48,13 +48,13 @@
               Departamento
             </label>
             <div class="col-md-5">
-                <select class="form-control" id="sel1">
-                    <option ng-repeat="n in registroCtrl.departments">{{n}}</option>
+                <select class="form-control" id="sel1" ng-model='registroCtrl.newUser.dip'>
+                    <option ng-repeat="n in registroCtrl.departments" value='{{n.dip}}'>{{n.nombre}}</option>
                 </select>
             </div>
           </div>
         
-          <button type="button" class="btn btn-danger">Registrar</button>
+          <input type="submit" class="btn btn-danger" value="Registrar" />
           <div><a href='#/'>Iniciar sesion</a></div>
         
         </form>
