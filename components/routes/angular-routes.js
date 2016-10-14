@@ -5,6 +5,9 @@
                 .when("/", {
                     templateUrl : "../views/main.html"
                 })
+                .when("/tipo-registro", {
+                    templateUrl: "../views/user/select_registro.html"
+                })
                 .when("/registro", {
                     templateUrl : "../views/user/add_user.html",
                     controller: 'RegistroController',
