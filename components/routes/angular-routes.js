@@ -13,6 +13,11 @@
                     controller: 'RegistroController',
                     controllerAs: 'registroCtrl'
                 })
+                .when("/login", {
+                    templateUrl: "../views/user/login.html",
+                    controller: 'LoginController',
+                    controllerAs: 'loginCtrl'
+                })
                 .when("/dashboard", {
                     templateUrl: "../views/dashboard/dashboard.html",
                     controller: 'DashboardController',

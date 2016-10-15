@@ -23,7 +23,6 @@ module.exports = {
     dip: {
       type: 'integer'
     }
-
   }
 };
 

@@ -1,10 +1,9 @@
 var angular = require('angular');
 var angularRoute = require('angular-route');
-var materialize = require('materialize-css');
+// var angularAnimate = require('angular-animate');
 
 (function(){
-
-angular.module('app', ['ngRoute']);
+angular.module('app', ['ngRoute', require('angular-animate')]);
 
 })();
 
@@ -12,3 +11,4 @@ require('./routes/angular-routes');
 
 require('./controllers/registroController');
 require('./controllers/dashboardController');
+require('./controllers/loginController');

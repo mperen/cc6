@@ -4,6 +4,7 @@
  * @description :: Server-side logic for managing usuarios
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+var bcrypt = require('bcrypt');
 
 module.exports = {
 
@@ -13,27 +14,52 @@ module.exports = {
         var password = req.param('password');
         var direccion = req.param('direccion');
         var dip = req.param('dip');
-        // var nombre = req.param('nombre');
-        // var sexo = req.param('sexo');
-        // var fechaNacimiento = req.param('fechaNacimiento');
+        var nombre = req.param('nombre');
+        var sexo = req.param('sexo');
+        var fechaNacimiento = req.param('fechaNacimiento');
 
-        var queryI = 'INSERT INTO Usuario(usuario, correo, password, direccion, dip) '
-        + 'VALUES("'+ usuario +'", "'+ correo +'", "'+ password +'", "'+ direccion +'", '+dip+')';
+        bcrypt.hash(password, 10, function(err, hash) {
+            if(err) return res.json({error: '1'});
+            var queryI = 'INSERT INTO Usuario(usuario, correo, password, direccion, dip) '
+            + 'VALUES("'+ usuario +'", "'+ correo +'", "'+ hash +'", "'+ direccion +'", '+dip+')';
 
-        console.log('REGISTRO', queryI);
+            Usuario.query(queryI, function(err, result){
+                if(err) res.negotiate(err);
 
-        Usuario.query(queryI, function(err, result){
-            if(err) res.negotiate(err);
+                var usuarioId = result.insertId;
+                var queryIP = 'INSERT INTO Persona(pid, nombre, sexo, fechaNacimiento) '
+                + 'VALUES ("'+ usuarioId +'", "'+ nombre +'", "'+ sexo +'", STR_TO_DATE("'+ fechaNacimiento +'", "%d-%m-%Y"))';
 
-            // var usuarioId = result.insertId;
-            // var queryIP = 'INSERT INTO Persona(pid, nombre, sexo, fechaNacimiento) '
-            // + 'VALUES ("'+ usuarioId +'", "'+ nombre +'", "'+ sexo +'", STR_TO_DATE("'+ fechaNacimiento +'", "%d-%m-%Y"))';
-
-            // Persona.query(queryIP, function(err, result){
-            //     if(err) res.negotiate(err);
-                res.json({msg: 'Usuario registrado con exito'});
-            // });
+                Persona.query(queryIP, function(err, result){
+                    if(err) res.negotiate(err);
+                    res.json({error: 0, msg: 'Usuario registrado con exito'});
+                });
+            });
+   
         });
+
+    },
+
+    login: function (req, res) {
+        var usuario = req.param('usuario');
+        var password = req.param('password');
+
+        var queryS = 'SELECT password FROM Usuario WHERE usuario = "' + usuario + '"';
+
+        Usuario.query(queryS, function (err, result) {
+            if(err) res.negotiate(err);
+            if(result[0] && result[0].password){
+                bcrypt.compare(password, result[0].password, function(err, cmp) {
+                    if(err) res.negotiate(err);
+
+                    if(cmp) return res.json({error:0, msg: 'Login exitoso'});
+                    else return res.json({error:1, msg: 'Usuario o contraseña incorrecta'});
+
+                });
+            } else {
+                return res.json({error:1, msg: 'Usuario o contraseña incorrecta'});
+            }
+        })
     }
 
 };

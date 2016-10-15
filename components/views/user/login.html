@@ -1,0 +1,39 @@
+<div class='login-background'>
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4">
+      <div class='login-container'>
+        
+        <h3>INICIAR SESION</h3>
+        
+        <form class="form-horizontal" ng-submit="loginCtrl.login()">
+          
+          <div class="form-group">
+            <label class="col-md-offset-2 col-md-1">
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            </label>
+            <div class="col-md-6">
+              <input class="form-control" type="text" ng-model="loginCtrl.credentials.usuario"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-offset-2 col-md-1">
+              <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+            </label>
+            <div class="col-md-6">
+              <input class="form-control" type="password" ng-model="loginCtrl.credentials.password"/>
+            </div>
+          </div>
+
+          <div class="error-text animate-show" ng-show="loginCtrl.loginE">
+            <h5>Usuario o contraseña incorrecta</h5>
+          </div>
+        
+          <input type="submit" class="btn btn-danger" value="Inicar Sesion"/>
+          <div><a href='#/tipo-registro'>Registrate</a></div>
+        
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

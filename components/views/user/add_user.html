@@ -1,53 +1,90 @@
 <div class='login-background'>
   <div class="row">
     <div class="col-md-offset-4 col-md-4">
-      <div class='login-container'>
+      <div class='register-container'>
         
         <h3>REGISTRO</h3>
         
         <form class="form-horizontal" ng-submit="registroCtrl.registroUsuario()">
           
           <div class="form-group">
-            <label class="col-md-offset-2 col-md-3">
+            <label class="col-md-offset-1 col-md-4">
+              Nombre
+            </label>
+            <div class="col-md-6">
+              <input class="form-control" type="text" ng-model='registroCtrl.newUser.nombre'/>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-offset-1 col-md-4">
               Correo
             </label>
-            <div class="col-md-5">
+            <div class="col-md-6">
               <input class="form-control" type="email" ng-model='registroCtrl.newUser.correo'/>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-md-offset-2 col-md-3">
+            <label class="col-md-offset-1 col-md-4">
               Usuario
             </label>
-            <div class="col-md-5">
+            <div class="col-md-6">
               <input class="form-control" type="text" ng-model='registroCtrl.newUser.usuario'/>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-md-offset-2 col-md-3">
+            <label class="col-md-offset-1 col-md-4">
               Contraseña
             </label>
-            <div class="col-md-5">
+            <div class="col-md-6">
               <input class="form-control" type="password" ng-model='registroCtrl.newUser.password'/>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-md-offset-2 col-md-3">
+            <label class="col-md-offset-1 col-md-4">
+              Sexo
+            </label>
+            <div class="col-md-6">
+              <select class="form-control" ng-model='registroCtrl.newUser.sexo'>
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+              </select>
+              
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-offset-1 col-md-4">
+              Fecha de nacimiento
+            </label>
+            <div class="col-md-2">
+              <select class="form-control" ng-model='registroCtrl.date.day'><option ng-repeat="d in registroCtrl.day" value='{{d}}'>{{d}}</option> </select>
+            </div>
+            <div class="col-md-2">
+              <select class="form-control" ng-model='registroCtrl.date.month'><option ng-repeat="m in registroCtrl.month" value='{{m}}'>{{m}}</option> </select>
+            </div>
+            <div class="col-md-2">
+              <select class="form-control" ng-model='registroCtrl.date.year'><option ng-repeat="y in registroCtrl.year" value='{{y}}'>{{y}}</option> </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-offset-1 col-md-4">
               Direccion
             </label>
-            <div class="col-md-5">
+            <div class="col-md-6">
               <input class="form-control" type="text" ng-model='registroCtrl.newUser.direccion'/>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-md-offset-2 col-md-3">
+            <label class="col-md-offset-1 col-md-4">
               Departamento
             </label>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <select class="form-control" id="sel1" ng-model='registroCtrl.newUser.dip'>
                     <option ng-repeat="n in registroCtrl.departments" value='{{n.dip}}'>{{n.nombre}}</option>
                 </select>
@@ -55,7 +92,7 @@
           </div>
         
           <input type="submit" class="btn btn-danger" value="Registrar" />
-          <div><a href='#/'>Iniciar sesion</a></div>
+          <div><a href='#/login'>Iniciar sesion</a></div>
         
         </form>
       </div>

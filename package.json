@@ -6,7 +6,9 @@
   "keywords": [],
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
     "angular-route": "^1.5.8",
+    "bcrypt": "^0.8.7",
     "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
     "ejs": "2.3.4",
