@@ -18,6 +18,11 @@
                     controller: "RegistroEmpresaController",
                     controllerAs: "registroCtrl"
                 })
+                .when("/registro-organizacion", {
+                    templateUrl: "../views/user/add_organizacion.html",
+                    controller: "RegistroOrganizacionController",
+                    controllerAs: "registroCtrl"
+                })
                 .when("/login", {
                     templateUrl: "../views/user/login.html",
                     controller: 'LoginController',

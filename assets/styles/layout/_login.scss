@@ -117,6 +117,13 @@
     }
 }
 
+#back-btn-reg{
+    position: absolute;
+    bottom: 20%;
+    left: 0;
+    left: 48%;
+}
+
 // BOOTSTRAP OVERRIDE
 
 .btn {
@@ -129,4 +136,5 @@
 
 .row {
     margin-right: 0 !important; 
+    margin-left: 0 !important;
 }

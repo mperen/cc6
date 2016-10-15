@@ -13,3 +13,4 @@ require('./controllers/registroController');
 require('./controllers/dashboardController');
 require('./controllers/loginController');
 require('./controllers/registroEmpresaController');
+require('./controllers/registroOrganizacionController');

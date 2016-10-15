@@ -3,6 +3,7 @@
     angular.module('app')
         .factory('RegistroUsuarioService', registerUser)
         .factory('RegistroEmpresaService', registerEmpUser)
+        .factory('RegistroOrgaService', registerOrgUser)
         .factory('LoginService', loginUser);
 
     function registerUser($http) {
@@ -17,6 +18,14 @@
         var registro = {};
         registro.registro = function(empresa){
             return $http.post('/usuario/registroEmpresa', empresa);
+        }
+        return registro;
+    }
+
+    function registerOrgUser ($http){
+        var registro = {};
+        registro.registro = function(orga){
+            return $http.post('/usuario/registroOrganizacion', orga);
         }
         return registro;
     }

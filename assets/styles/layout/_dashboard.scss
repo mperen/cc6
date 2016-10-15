@@ -1,11 +1,41 @@
-$bgDefault      : #2274a5;
-
-.nav-logo {
-    width: 40px;
-    height: 40px;
+.paper-dash{
+    background-color: #364156;
+    color: #fff;
+    height: 100vh;
 }
 
-.navbar-default {
-    background-color: $bgDefault !important;
-    border-color: $bgDefault !important;
+.paper-event {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #53A2BE;
+    -webkit-box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.2);
+    font-family: 'Roboto', sans-serif;
+
+    ul {
+        list-style-type: none;
+        padding-left: 5px;
+
+        li {
+            margin-top: 5px;
+
+            span {
+                margin-right: 8px;
+            }
+        }
+    }
+
+    button {
+        margin-top: 10px;
+        span {
+            margin-right: 5px;
+        }
+    }
+
+    .paper-event-description {
+        border-left:1px solid #38546d; 
+    }
 }
+

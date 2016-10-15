@@ -3,13 +3,13 @@
     <div class="col-md-offset-4 col-md-4">
       <div class='register-container animated fadeIn'>
         
-        <h3>REGISTRO DE EMPRESA</h3>
+        <h3>REGISTRO DE ORGANIZACION</h3>
         
-        <form class="form-horizontal" ng-submit="registroCtrl.registroEmpresa()" name="registerForm">
+        <form class="form-horizontal" ng-submit="registroCtrl.registroOrga()" name="registerForm">
           
           <div class="form-group">
             <label class="col-md-offset-1 col-md-4">
-              Nombre de la empresa
+              Nombre de la organizacion
             </label>
             <div class="col-md-6">
               <input class="form-control" type="text" ng-model='registroCtrl.newUser.nombre' required/>
@@ -46,10 +46,10 @@
 
           <div class="form-group">
             <label class="col-md-offset-1 col-md-4">
-              Interes
+              Tipo de organizacion
             </label>
             <div class="col-md-6">
-              <select class="form-control" ng-model='registroCtrl.newUser.interes' ng-options="int.descripcion for int in registroCtrl.intereses track by int.iid"/>
+              <select class="form-control" ng-model='registroCtrl.newUser.tipo' ng-options="int.descripcion for int in registroCtrl.intereses track by int.iid"/>
             </div>
           </div>
 
