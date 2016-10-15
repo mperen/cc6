@@ -24,17 +24,11 @@
 }
 
 .error-text {
-    color: #A41911;
+    color: #A41911 !important;
     h5 {
         font-weight: bold;
     }
-    
 }
-
-// .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
-//   transition: all ease 0.5s;
-// }
-
 
 /* when hiding the picture */
 .ng-hide-add         { animation:0.5s flipInX ease; }
@@ -78,8 +72,6 @@
     transform: perspective(400px);
   }
 }
-
-
 
 .register-container {
     margin-top: 30%;

@@ -40,7 +40,7 @@ gulp.task('sass:watch', function(){
 
 gulp.task('material:css', function(cb){
     pump([
-        gulp.src(['./node_modules/bootstrap/dist/css/bootstrap.css', './node_modules/bootstrap/dist/css/bootstrap.css.map'], {ignoreInitial: false}),
+        gulp.src(['./node_modules/bootstrap/dist/css/bootstrap.css', './node_modules/bootstrap/dist/css/bootstrap.css.map', './node_modules/animate.css/animate.min.css'], {ignoreInitial: false}),
         gulp.dest('.tmp/public/css/styles')    
     ],
     cb);

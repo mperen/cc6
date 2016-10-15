@@ -13,6 +13,11 @@
                     controller: 'RegistroController',
                     controllerAs: 'registroCtrl'
                 })
+                .when("/registro-empresa", {
+                    templateUrl: "../views/user/add_empresa.html",
+                    controller: "RegistroEmpresaController",
+                    controllerAs: "registroCtrl"
+                })
                 .when("/login", {
                     templateUrl: "../views/user/login.html",
                     controller: 'LoginController',

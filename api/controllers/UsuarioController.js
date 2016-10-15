@@ -22,6 +22,7 @@ module.exports = {
             if(err) return res.json({error: '1'});
             var queryI = 'INSERT INTO Usuario(usuario, correo, password, direccion, dip) '
             + 'VALUES("'+ usuario +'", "'+ correo +'", "'+ hash +'", "'+ direccion +'", '+dip+')';
+            console.log('INSERT', queryI);
 
             Usuario.query(queryI, function(err, result){
                 if(err) res.negotiate(err);
@@ -38,6 +39,37 @@ module.exports = {
    
         });
 
+    },
+
+    registroEmpresa: function(req, res){
+        var usuario = req.param('usuario');
+        var correo = req.param('correo');
+        var password = req.param('password');
+        var direccion = req.param('direccion');
+        var dip = req.param('dip');
+        
+        var nombre = req.param('nombre');
+        var interes = req.param('interes');
+
+        bcrypt.hash(password, 10, function(err, hash) {
+            if(err) return res.json({error: '1'});
+            var queryI = 'INSERT INTO Usuario(usuario, correo, password, direccion, dip) '
+            + 'VALUES("'+ usuario +'", "'+ correo +'", "'+ hash +'", "'+ direccion +'", '+dip+')';
+
+            Usuario.query(queryI, function(err, result){
+                if(err) res.negotiate(err);
+
+                var usuarioId = result.insertId;
+                var queryIP = 'INSERT INTO Empresa(eid, nombre, interes) '
+                + 'VALUES ('+ usuarioId +', "'+ nombre +'", '+ interes +')';
+
+                Empresa.query(queryIP, function(err, result){
+                    if(err) res.negotiate(err);
+                    res.json({error: 0, msg: 'Empresa registrada con exito'});
+                });
+            });
+   
+        });
     },
 
     login: function (req, res) {

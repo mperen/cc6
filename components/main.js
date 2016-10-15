@@ -12,3 +12,4 @@ require('./routes/angular-routes');
 require('./controllers/registroController');
 require('./controllers/dashboardController');
 require('./controllers/loginController');
+require('./controllers/registroEmpresaController');

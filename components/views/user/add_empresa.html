@@ -3,13 +3,13 @@
     <div class="col-md-offset-4 col-md-4">
       <div class='register-container'>
         
-        <h3>REGISTRO</h3>
+        <h3>REGISTRO DE EMPRESA</h3>
         
-        <form class="form-horizontal" ng-submit="registroCtrl.registroUsuario()" name="registerForm">
+        <form class="form-horizontal" ng-submit="registroCtrl.registroEmpresa()" name="registerForm">
           
           <div class="form-group">
             <label class="col-md-offset-1 col-md-4">
-              Nombre
+              Nombre de la empresa
             </label>
             <div class="col-md-6">
               <input class="form-control" type="text" ng-model='registroCtrl.newUser.nombre' required/>
@@ -46,30 +46,10 @@
 
           <div class="form-group">
             <label class="col-md-offset-1 col-md-4">
-              Sexo
+              Interes
             </label>
             <div class="col-md-6">
-              <select class="form-control" ng-model='registroCtrl.newUser.sexo'>
-                <option value="">Seleccione su sexo</option>
-                <option value="M">Masculino</option>
-                <option value="F">Femenino</option>
-              </select>
-              
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-md-offset-1 col-md-4">
-              Fecha de nacimiento
-            </label>
-            <div class="col-md-2">
-              <select class="form-control" ng-model='registroCtrl.date.day' ng-options="d for d in registroCtrl.day" />
-            </div>
-            <div class="col-md-2">
-              <select class="form-control" ng-model='registroCtrl.date.month' ng-options="m for m in registroCtrl.month"/>
-            </div>
-            <div class="col-md-2">
-              <select class="form-control" ng-model='registroCtrl.date.year' ng-options="y for y in registroCtrl.year"/>
+              <select class="form-control" ng-model='registroCtrl.newUser.interes' ng-options="int.descripcion for int in registroCtrl.intereses track by int.iid"/>
             </div>
           </div>
 
