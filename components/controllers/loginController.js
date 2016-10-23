@@ -13,7 +13,14 @@
                     console.log('CLICK', result.data);
                     if(result.data.error == 1) this.loginE = true;
                     else{
-                        document.cookie = "username=John Doe";
+                        var usuario = result.data.user.usuario;
+                        var correo = result.data.user.correo;
+                        var tipo = result.data.user.tipo;
+                        document.cookie = 'session=;';
+                        document.cookie = 'username=;';
+                        document.cookie = 'usuario='+ usuario +';';
+                        document.cookie = 'correo='+ correo +';';
+                        document.cookie = 'tipo='+ tipo +';';
                         $window.location.href = '/nav';
                     } 
                 }, (err)=>{

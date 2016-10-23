@@ -116,11 +116,44 @@ module.exports = {
             if(result[0] && result[0].password){
                 bcrypt.compare(password, result[0].password, function(err, cmp) {
                     if(err) res.negotiate(err);
+                    
+                    if(cmp) {
+                        var queryGen = (table, id) => 'SELECT EXISTS(SELECT * FROM '+ table +' WHERE '+ id +' = "'+ result[0].uid +'") as exist'; 
+                        var user = _.omit(result[0], ['password', 'uid', 'direccion', 'dip']);
+                    
+                        Persona.query(queryGen('Persona', 'pid'), function(err, existP){
+                            if(err) res.negotiate;
+                            if(existP[0].exist == 1){
+                                user.tipo = 'Persona';
+                                res.json({error:0, user});
+                            } else {
+                                Empresa.query(queryGen('Empresa', 'eid'), (err, existE)=>{
+                                    if(err) res.negotiate;
+                                    if(existE[0].exist == 1){
+                                        user.tipo = 'Empresa';
+                                        res.json({error:0, user});
+                                    } else {
+                                        Organizacion.query(queryGen('Organizacion', 'orid'), (err, existO)=>{
+                                            if(err) res.negotiate;
+                                            if(existO[0].exist == 1){
+                                                user.tipo = 'Organizacion';
+                                                res.json({error:0, user});
+                                            } else  res.json({error:0, user});
+                                        });
+                                    }
+                                });
+                            }
+                            
+                            
+                            
+                        });
+                        
+                        
 
-                    var user = _.omit(result[0], ['password', 'uid', 'direccion', 'dip']);
+                    } else return res.json({error:1, msg: 'Usuario o contraseña incorrecta'});
 
-                    if(cmp) return res.json({error:0, user});
-                    else return res.json({error:1, msg: 'Usuario o contraseña incorrecta'});
+
+                    
 
                 });
             } else {
