@@ -1,3 +1,4 @@
+var _ = require('lodash');
 require('../services/perfilService');
 (function(){
 
@@ -8,6 +9,13 @@ require('../services/perfilService');
         this.user= {};
         this.userBk = {};
         this.editUser = false;
+
+        var userInfo = document.cookie;
+        var infoSplit = _.split(userInfo, ";"); 
+
+        console.log('SPLITING', infoSplit);
+
+        console.log('COOKIEaa', document.cookie);
 
         GetUserService.get({userId: '38', tipo: 'Persona'})
             .then((result)=> {
