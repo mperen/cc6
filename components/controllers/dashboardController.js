@@ -1,6 +1,6 @@
 (function(){
 
-    angular.module('app')
+    angular.module('dash')
         .controller('DashboardController', dashFunction);
 
     function dashFunction(){

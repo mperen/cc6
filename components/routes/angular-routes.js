@@ -28,10 +28,10 @@
                     controller: 'LoginController',
                     controllerAs: 'loginCtrl'
                 })
-                .when("/dashboard", {
-                    templateUrl: "../views/dashboard/dashboard.html",
-                    controller: 'DashboardController',
-                    controllerAs: 'dashCtrl'
-                })
+                // .when("/dashboard", {
+                //     templateUrl: "../views/dashboard/dashboard.html",
+                //     controller: 'DashboardController',
+                //     controllerAs: 'dashCtrl'
+                // })
         })
 })();

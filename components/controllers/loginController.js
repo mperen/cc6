@@ -3,7 +3,7 @@
     angular.module('app')
         .controller('LoginController', login);
 
-    function login(LoginService, $location){
+    function login(LoginService, $location, $window){
         this.credentials = {};
         this.loginE = false;
         
@@ -12,7 +12,8 @@
                 .then((result)=>{
                     console.log('CLICK', result.data);
                     if(result.data.error == 1) this.loginE = true;
-                    else $location.path('/dashboard');
+                    else $window.location.href = '/nav';
+                    // $location.path('/nav/#/dashboard');
                 }, (err)=>{
                     console.log('ERROR', err);
                 })
