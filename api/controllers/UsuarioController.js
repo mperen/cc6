@@ -124,6 +124,42 @@ module.exports = {
                 return res.json({error:1, msg: 'Usuario o contraseña incorrecta'});
             }
         })
+    },
+
+    obtener: function (req, res) {
+        var userId = req.param('userId');
+        var tipo = req.param('tipo');
+        
+        var searchFields = "";
+        var tipoId = "";
+        switch (tipo) {
+            case 'Persona':
+                searchFields = 'p.nombre, p.sexo, p.fechaNacimiento';
+                tipoId = 'p.pid';
+                tipo += ' p';
+                break;
+            case 'Empresa':
+                searchFields = 'e.interes, e.nombre';
+                tipoId = 'e.eid';
+                tipo += ' e';
+                break;
+            case 'Organizacion':
+                searchFields = 'o.tipo, o.nombre';
+                tipoId = 'o.orid';
+                tipo += ' o';
+                break;
+        }
+
+        var queryS = 'SELECT u.usuario, u.correo, u.direccion, d.nombre as departamento, '+ searchFields +
+        ' FROM Usuario u, Departamento d, '+tipo+' WHERE u.uid = "'+ userId +'" AND u.uid = '+ tipoId + ' AND u.dip = d.dip';
+        
+        Usuario.query(queryS, function(err, result) {
+            if(err) res.negotiate(err);
+            if(result.length == 0) return res.json({err: '1', msg: 'No existe una ' + tipo + ' con ese id'});
+            else return res.json(result[0]); 
+            
+        })
+        
     }
 
 };

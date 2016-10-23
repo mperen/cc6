@@ -37,7 +37,8 @@ module.exports.routes = {
   },
   '/nav': {
     view: 'dash'
-  }
+  },
+  'POST /usuario/obtener' : 'UsuarioController.obtener'
 
   /***************************************************************************
   *                                                                          *
