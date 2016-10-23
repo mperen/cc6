@@ -1,9 +1,86 @@
 <div class="container">
     <div class="profile-paper">
-        <div>
-            <h3>Nombre</h3>
-            
+        
+        
+        <span class="glyphicon glyphicon-pencil edit-option" aria-hidden="true" ng-click="profileCtrl.enableEdit()"></span>
+        
+
+
+        <div class="row">
+            <div class="col-md-12 user-img">
+                <img src='/images/user.png'/>
+            </div>           
         </div>
+        
+
+
+        <div class="row user-fields">
+            <div class="col-md-6">
+                <span class="pull-right info-user">
+                    Nombre
+                </span>
+            </div>
+            <div class="col-md-6 divider">
+                <div ng-hide="profileCtrl.editUser">{{profileCtrl.user.nombre}}</div>
+                <input type="text" class="input-edit" ng-show="profileCtrl.editUser" ng-model="profileCtrl.user.nombre"/>
+            </div>
+        </div>
+
+        <div class="row user-fields">
+            <div class="col-md-6">
+                <span class="pull-right info-user">
+                    Correo
+                </span>
+            </div>
+            <div class="col-md-6 divider">
+                <div ng-hide="profileCtrl.editUser">{{profileCtrl.user.correo}}</div>
+                <input type="text" class="input-edit" ng-show="profileCtrl.editUser" ng-model="profileCtrl.user.correo"/>
+            </div>
+        </div>
+
+        <div class="row user-fields">
+            <div class="col-md-6">
+                <span class="pull-right info-user">
+                    Usuario
+                </span>
+            </div>
+            <div class="col-md-6 divider">
+                <div ng-hide="profileCtrl.editUser">{{profileCtrl.user.usuario}}</div>
+                <input type="text" class="input-edit" ng-show="profileCtrl.editUser" ng-model="profileCtrl.user.usuario"/>
+            </div>
+        </div>
+
+        <div class="row user-fields">
+            <div class="col-md-6">
+                <span class="pull-right info-user">
+                    Direccion
+                </span>
+            </div>
+            <div class="col-md-6 divider">
+                <div ng-hide="profileCtrl.editUser">{{profileCtrl.user.direccion}}</div>
+                <input type="text" class="input-edit" ng-show="profileCtrl.editUser" ng-model="profileCtrl.user.direccion"/>
+            </div>
+        </div>
+
+        <div class="row user-fields">
+            <div class="col-md-6">
+                <span class="pull-right info-user">
+                    Departamento
+                </span>
+            </div>
+            <div class="col-md-6 divider">
+                <div ng-hide="profileCtrl.editUser">{{profileCtrl.user.departamento}}</div>
+                <input type="text" class="input-edit" ng-show="profileCtrl.editUser" ng-model="profileCtrl.user.departamento"/>
+            </div>
+        </div>
+
+        <div class="row btn-edit" ng-show="profileCtrl.editUser">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-success" ng-click="profileCtrl.updateUser()">Guardar</button>
+                <button type="button" class="btn btn-danger" ng-click="profileCtrl.disableEdit()">Cancelar</button>              
+            </div>
+        </div>
+
 
     </div>
 </div>
