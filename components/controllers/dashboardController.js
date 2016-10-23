@@ -5,6 +5,7 @@
 
     function dashFunction(){
         this.name = 'fnavarijo';
+        console.log('COOKIE', document.cookie);
     }
 
 })();

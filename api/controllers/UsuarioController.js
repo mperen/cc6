@@ -5,6 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 var bcrypt = require('bcrypt');
+var _ = require('lodash');
 
 module.exports = {
 
@@ -108,7 +109,7 @@ module.exports = {
         var usuario = req.param('usuario');
         var password = req.param('password');
 
-        var queryS = 'SELECT password FROM Usuario WHERE usuario = "' + usuario + '"';
+        var queryS = 'SELECT * FROM Usuario WHERE usuario = "' + usuario + '"';
 
         Usuario.query(queryS, function (err, result) {
             if(err) res.negotiate(err);
@@ -116,7 +117,9 @@ module.exports = {
                 bcrypt.compare(password, result[0].password, function(err, cmp) {
                     if(err) res.negotiate(err);
 
-                    if(cmp) return res.json({error:0, msg: 'Login exitoso'});
+                    var user = _.omit(result[0], ['password', 'uid', 'direccion', 'dip']);
+
+                    if(cmp) return res.json({error:0, user});
                     else return res.json({error:1, msg: 'Usuario o contraseña incorrecta'});
 
                 });
@@ -155,7 +158,7 @@ module.exports = {
         
         Usuario.query(queryS, function(err, result) {
             if(err) res.negotiate(err);
-            if(result.length == 0) return res.json({err: '1', msg: 'No existe una ' + tipo + ' con ese id'});
+            if(result.length == 0) return res.json({error: '1', msg: 'No existe una ' + tipo + ' con ese id'});
             else return res.json(result[0]); 
             
         })
