@@ -119,7 +119,7 @@ module.exports = {
                     
                     if(cmp) {
                         var queryGen = (table, id) => 'SELECT EXISTS(SELECT * FROM '+ table +' WHERE '+ id +' = "'+ result[0].uid +'") as exist'; 
-                        var user = _.omit(result[0], ['password', 'uid', 'direccion', 'dip']);
+                        var user = _.omit(result[0], ['password', 'direccion', 'dip']);
                     
                         Persona.query(queryGen('Persona', 'pid'), function(err, existP){
                             if(err) res.negotiate;

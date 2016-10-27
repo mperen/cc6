@@ -1,23 +1,23 @@
-var _ = require('lodash');
 require('../services/perfilService');
+require('../helpers/cookieService');
+
+
+var _ = require('lodash');
 (function(){
 
     angular.module('dash')
         .controller('ProfileController', profileFunc);
     
-    function profileFunc(GetUserService){
+    function profileFunc(GetUserService, CookieService){
         this.user= {};
         this.userBk = {};
         this.editUser = false;
 
-        var userInfo = document.cookie;
-        var infoSplit = _.split(userInfo, ";"); 
+        var objCookie = CookieService.transform(document.cookie);
 
-        console.log('SPLITING', infoSplit);
+        console.log('cookieObj', document.cookie, objCookie);
 
-        console.log('COOKIEaa', document.cookie);
-
-        GetUserService.get({userId: '38', tipo: 'Persona'})
+        GetUserService.get({userId: objCookie.id, tipo: objCookie.tipo})
             .then((result)=> {
                 this.user = result.data;
                 this.userBk = Object.assign({}, this.user);

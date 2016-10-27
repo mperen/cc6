@@ -16,11 +16,13 @@
                         var usuario = result.data.user.usuario;
                         var correo = result.data.user.correo;
                         var tipo = result.data.user.tipo;
+                        var id = result.data.user.uid;
                         document.cookie = 'session=;';
                         document.cookie = 'username=;';
                         document.cookie = 'usuario='+ usuario +';';
                         document.cookie = 'correo='+ correo +';';
                         document.cookie = 'tipo='+ tipo +';';
+                        document.cookie = 'id='+ id +';';
                         $window.location.href = '/nav';
                     } 
                 }, (err)=>{
