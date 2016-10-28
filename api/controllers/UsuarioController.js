@@ -196,6 +196,38 @@ module.exports = {
             
         })
         
+    },
+
+    actualizar: function(req, res){
+        var idUser = req.param('id');
+        var correo = req.param('correo');
+        var usuario = req.param('usuario');
+        var direccion = req.param('direccion');
+        var departamento = req.param('departamento');
+        
+        var tipo = req.param('tipo');
+        var nombre = req.param('nombre');
+
+        var updateQR = 'UPDATE Usuario SET correo="'+ correo +'", usuario="'+ usuario +'", direccion="'+ direccion +'", dip='+ departamento +' WHERE uid=' + idUser;
+
+        // var updateTipo = '';
+        // switch(tipo){
+        //     case 'Persona':
+        //         updateTipo = 'UPDATE Persona SET nombre="'+ nombre +'",'
+        //         break;
+        //     case 'Empresa':
+        //         break;
+        //     case 'Organizacion':
+        //         break;
+        //     default:
+        // }
+
+        Usuario.query(updateQR, function(err, result){
+            if(err) res.negotiate(err);            
+            res.json({error: 0, msg: 'Perfil actualizado'}); 
+        });
+
+
     }
 
 };
