@@ -4,15 +4,11 @@
         
         <span class="glyphicon glyphicon-pencil edit-option" aria-hidden="true" ng-click="profileCtrl.enableEdit()"></span>
         
-
-
         <div class="row">
             <div class="col-md-12 user-img">
                 <img src='/images/user.png'/>
             </div>           
         </div>
-        
-
 
         <div class="row user-fields">
             <div class="col-md-6">
@@ -73,6 +69,68 @@
                 <input type="text" class="input-edit" ng-show="profileCtrl.editUser" ng-model="profileCtrl.user.departamento"/>
             </div>
         </div>
+
+
+        <!--isUser == true, show this-->
+        <div class="row user-fields" ng-show="profileCtrl.isUser">
+            <div class="col-md-6">
+                <span class="pull-right info-user">
+                    Sexo
+                </span>
+            </div>
+            <div class="col-md-6 divider">
+                <div ng-hide="profileCtrl.editUser">{{profileCtrl.user.sexo == 'M' ? 'Masculino' : 'Femenino'}}</div>
+                <div ng-show="profileCtrl.editUser">
+                    <select class="form-control" ng-model='profileCtrl.user.sexo'>
+                        <option value="">Seleccione su sexo</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row user-fields" ng-show="profileCtrl.isUser">
+            <div class="col-md-6">
+                <span class="pull-right info-user">
+                    Fecha de Nacimiento
+                </span>
+            </div>
+            <div class="col-md-6 divider">
+                <div ng-hide="profileCtrl.editUser">{{profileCtrl.user.fechaNacimiento | date:'dd-MM-yyyy'}}</div>
+                <div class="row" ng-show="profileCtrl.editUser">
+                    <div class="col-md-3">
+                        <select class="form-control" ng-model='profileCtrl.date.day' ng-options="d for d in profileCtrl.day" />
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" ng-model='profileCtrl.date.month' ng-options="m for m in profileCtrl.month"/>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" ng-model='profileCtrl.date.year' ng-options="y for y in profileCtrl.year"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--isUser == false, show this-->
+        <div class="row user-fields" ng-show="!profileCtrl.isUser">
+            <div class="col-md-6">
+                <span class="pull-right info-user">
+                    Interes
+                </span>
+            </div>
+            <div class="col-md-6 divider">
+                <div ng-hide="profileCtrl.editUser">{{profileCtrl.user.sexo == 'M' ? 'Masculino' : 'Femenino'}}</div>
+                <div ng-show="profileCtrl.editUser">
+                    <select class="form-control" ng-model='profileCtrl.user.sexo'>
+                        <option value="">Seleccione su sexo</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
 
         <div class="row btn-edit" ng-show="profileCtrl.editUser">
             <div class="col-md-12">
