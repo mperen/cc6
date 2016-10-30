@@ -210,23 +210,31 @@ module.exports = {
 
         var updateQR = 'UPDATE Usuario SET correo="'+ correo +'", usuario="'+ usuario +'", direccion="'+ direccion +'", dip='+ departamento +' WHERE uid=' + idUser;
 
-        // var updateTipo = '';
-        // switch(tipo){
-        //     case 'Persona':
-        //         updateTipo = 'UPDATE Persona SET nombre="'+ nombre +'",'
-        //         break;
-        //     case 'Empresa':
-        //         break;
-        //     case 'Organizacion':
-        //         break;
-        //     default:
-        // }
+        var updateTipo = '';
+        switch(tipo){
+            case 'Persona':
+                var sexo = req.param('sexo');
+                var fechaNacimiento = req.param('fechaNacimiento');
+                updateTipo = 'UPDATE Persona SET nombre="'+ nombre +'", sexo="'+ sexo +'", fechaNacimiento=STR_TO_DATE("'+ fechaNacimiento +'", "%d-%m-%Y") WHERE pid=' + idUser;
+                break;
+            case 'Empresa':
+                var interes = req.param('interes');
+                updateTipo = 'UPDATE Empresa SET nombre="'+ nombre +'", interes='+ interes + ' WHERE eid=' + idUser;
+                break;
+            case 'Organizacion':
+                var interes = req.param('interes');
+                updateTipo = 'UPDATE Organizacion SET nombre="'+ nombre +'", tipo='+ interes + ' WHERE orid=' + idUser;
+                break;
+            default:
+        }
 
         Usuario.query(updateQR, function(err, result){
-            if(err) res.negotiate(err);            
-            res.json({error: 0, msg: 'Perfil actualizado'}); 
+            if(err) res.negotiate(err);                       
+            Usuario.query(updateTipo, function(err, result){
+                if(err) res.negotiate(err);
+                res.json({error: 0, msg: 'Perfil actualizado'}); 
+            });
         });
-
 
     }
 
