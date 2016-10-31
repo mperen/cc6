@@ -12,5 +12,15 @@
                     controller: 'ProfileController',
                     controllerAs: 'profileCtrl'
                 })
+                .when("/buscador", {
+                    templateUrl: "../views/dashboard/buscador.html",
+                    controller: 'BuscadorController',
+                    controllerAs: 'buscCtrl'
+                })
+                .when("/mis-eventos", {
+                    templateUrl: "../views/dashboard/mis_eventos.html",
+                    controller: 'MisEventosController',
+                    controllerAs: 'mevCtrl'
+                })
         })
 })();

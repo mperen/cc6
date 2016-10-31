@@ -1,40 +1,43 @@
 <div ng-app="dash">
-    <nav class="navbar navbar-default navbar-static-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#/">
-            <img class="nav-logo" src="../images/logo.png"/><span/>
-        </a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#/">Home <span class="sr-only">(current)</span></a></li>
-            <li><a href="#/eventos">Eventos</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <img src='../images/prof.png' class='nav-logo'/> <span class="caret"/>
+    <div ng-controller="NavbarController as navCtrl">
+        <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">
+                <img class="nav-logo" src="../images/logo.png"/><span/>
             </a>
-            <ul class="dropdown-menu">
-                <li><a href="#/">Mis Eventos</a></li>
-                <li><a href="#/perfil">Mi Perfil</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="/#/login">Cerrar sesion</a></li>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ng-class="{active: navCtrl.selectedTab == 1}" class="active" ng-click="navCtrl.changeTab(1)"><a href="#/">Home <span class="sr-only">(current)</span></a></li>
+                <li ng-class="{active: navCtrl.selectedTab == 2}" ng-show="navCtrl.isUser || navCtrl.isEmp" ng-click="navCtrl.changeTab(2)"><a href="#/buscador">Buscador</a></li>
+                <li ng-class="{active: navCtrl.selectedTab == 2}" ng-show="navCtrl.isOrg" ng-click="navCtrl.changeTab(2)"><a href="#/creador-evento">Crear evento</a></li>
             </ul>
-            </li>
-        </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-    </nav>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <img src='../images/prof.png' class='nav-logo'/> <span class="caret"/>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#/mis-eventos">Mis Eventos</a></li>
+                    <li><a href="#/perfil">Mi Perfil</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="/#/login">Cerrar sesion</a></li>
+                </ul>
+                </li>
+            </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+        </nav>
+    </div>
 
     <div ng-view></div>
 
