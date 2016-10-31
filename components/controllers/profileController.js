@@ -43,7 +43,7 @@ var _ = require('lodash');
                 this.user = result.data;
                 this.user.dip = this.user.dip.toString();
                 if(objCookie.tipo === 'Empresa') this.user.interes = this.user.interes.toString();
-                else if(objCookie.tipo === 'Organizacion') this.user.tipo = this.user.tipo.toString();
+                else if(objCookie.tipo === 'Organizacion') this.user.interes = this.user.tipo.toString();
                 this.userBk = Object.assign({}, this.user);
                 
                 GetDepartamentosService
@@ -74,7 +74,6 @@ var _ = require('lodash');
         this.enableEdit = function () {
             if(this.editUser) this.user = Object.assign({}, this.userBk);
             this.editUser = !this.editUser;
-            console.log('EDITING', this.editUser);
         }
 
         this.disableEdit = function () {
@@ -91,7 +90,7 @@ var _ = require('lodash');
             console.log('UPDATING', this.user, this.userBk);
             UpdateUserService.update(this.user)
                 .then((result)=> {
-                    console.log(result);
+                    this.editUser = false;
                 }, (err)=>console.log('ERR'));
         }
 
