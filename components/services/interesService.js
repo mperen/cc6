@@ -1,6 +1,6 @@
 (function(){
 
-    angular.module('app')
+    angular.module('global')
         .factory('GetInteresService', interesFunc);
 
     function interesFunc($http){

@@ -186,7 +186,7 @@ module.exports = {
                 break;
         }
 
-        var queryS = 'SELECT u.usuario, u.correo, u.direccion, d.nombre as departamento, '+ searchFields +
+        var queryS = 'SELECT u.usuario, u.correo, u.direccion, d.dip, '+ searchFields +
         ' FROM Usuario u, Departamento d, '+tipo+' WHERE u.uid = "'+ userId +'" AND u.uid = '+ tipoId + ' AND u.dip = d.dip';
         
         Usuario.query(queryS, function(err, result) {
@@ -203,7 +203,7 @@ module.exports = {
         var correo = req.param('correo');
         var usuario = req.param('usuario');
         var direccion = req.param('direccion');
-        var departamento = req.param('departamento');
+        var departamento = req.param('dip');
         
         var tipo = req.param('tipo');
         var nombre = req.param('nombre');

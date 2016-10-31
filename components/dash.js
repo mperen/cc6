@@ -1,5 +1,5 @@
 (function(){
-angular.module('dash', ['ngRoute', require('angular-animate')]);
+angular.module('dash', ['ngRoute', require('angular-animate'), 'global']);
 
 })();
 

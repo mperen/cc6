@@ -2,9 +2,10 @@ var angular = require('angular');
 var angularRoute = require('angular-route');
 // var angularAnimate = require('angular-animate');
 
+require('./global.js');
 
 (function(){
-angular.module('app', ['ngRoute', require('angular-animate')]);
+angular.module('app', ['ngRoute', require('angular-animate'), 'global']);
 
 })();
 

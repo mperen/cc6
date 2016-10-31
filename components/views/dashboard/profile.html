@@ -65,8 +65,14 @@
                 </span>
             </div>
             <div class="col-md-6 divider">
-                <div ng-hide="profileCtrl.editUser">{{profileCtrl.user.departamento}}</div>
-                <input type="text" class="input-edit" ng-show="profileCtrl.editUser" ng-model="profileCtrl.user.departamento"/>
+                <div ng-hide="profileCtrl.editUser">{{profileCtrl.departamentoNmb}}</div>
+                <div ng-show="profileCtrl.editUser">
+                    <!--<select class="form-control" ng-model='profileCtrl.user.dip' 
+                            ng-options="dep.nombre for dep in profileCtrl.departamentos track by dep.dip"/>-->
+                    <select class="form-control" ng-model="profileCtrl.user.dip">
+                        <option ng-repeat="dep in profileCtrl.departamentos" value="{{dep.dip}}">{{dep.nombre}}</option>
+                    </select>
+                </div>               
             </div>
         </div>
 
@@ -120,12 +126,12 @@
                 </span>
             </div>
             <div class="col-md-6 divider">
-                <div ng-hide="profileCtrl.editUser">{{profileCtrl.user.sexo == 'M' ? 'Masculino' : 'Femenino'}}</div>
+                <div ng-hide="profileCtrl.editUser">{{profileCtrl.interesDescp}}</div>
                 <div ng-show="profileCtrl.editUser">
-                    <select class="form-control" ng-model='profileCtrl.user.sexo'>
-                        <option value="">Seleccione su sexo</option>
-                        <option value="M">Masculino</option>
-                        <option value="F">Femenino</option>
+                    <!--<select class="form-control" ng-model='profileCtrl.user.interes' 
+                        ng-options="int.descripcion for int in profileCtrl.intereses track by int.iid"/>-->
+                    <select class="form-control" ng-model="profileCtrl.user.interes">
+                        <option ng-repeat="int in profileCtrl.intereses" value="{{int.iid}}">{{int.descripcion}}</option>
                     </select>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 (function(){
 
-    angular.module('app')
+    angular.module('global')
         .factory('GetDepartamentosService', getDepartamento);
 
     function getDepartamento($http) {
