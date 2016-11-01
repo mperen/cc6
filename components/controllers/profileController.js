@@ -16,6 +16,10 @@ var _ = require('lodash');
         this.editUser = false;
         
         this.isUser = (objCookie.tipo === 'Persona');
+        this.profilePic = '';
+        if(objCookie.tipo === 'Persona') this.profilePic = '/images/user.png';
+        else if (objCookie.tipo === 'Empresa') this.profilePic = '/images/empresa.png';
+        else this.profilePic = '/images/org.png';
 
         this.intereses = [];
         this.departamentos = [];

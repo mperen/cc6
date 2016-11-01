@@ -22,5 +22,10 @@
                     controller: 'MisEventosController',
                     controllerAs: 'mevCtrl'
                 })
+                .when("/creador-evento", {
+                    templateUrl: "../views/dashboard/crear_evento.html",
+                    controller: 'CreadorController',
+                    controllerAs: 'creadorCtrl'
+                })
         })
 })();

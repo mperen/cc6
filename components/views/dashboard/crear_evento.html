@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="profile-paper">
+
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Nombre del evento</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <label for="comment">Descripcion</label>
+                <textarea class="form-control" rows="5" id="comment"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="col-md-offset-1 col-md-4">
+                    Fecha del evento
+                </label>
+                <div class="col-md-2">
+                    <select class="form-control" ng-model='creadorCtrl.date.day' ng-options="d for d in creadorCtrl.day" />
+                </div>
+                <div class="col-md-2">
+                    <select class="form-control" ng-model='creadorCtrl.date.month' ng-options="m for m in creadorCtrl.month"/>
+                </div>
+                <div class="col-md-2">
+                    <select class="form-control" ng-model='creadorCtrl.date.year' ng-options="y for y in creadorCtrl.year"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Crear</button>
+            </div>
+        </form>
+
+
+    </div>
+</div>
