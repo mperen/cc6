@@ -18,8 +18,20 @@
 
     </div>
 
-    <button type="button" class="btn btn-sm btn-info">
+    <button type="button" class="btn btn-sm btn-info" ng-hide="{{asistiendo}}">
         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>Asistire
+    </button>
+
+    <button type="button" class="btn btn-sm btn-success" ng-show="{{asistiendo}}">
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>Asistiendo
+    </button>
+
+    <button type="button" class="btn btn-sm btn-info" ng-show="empresa && donacion">
+        <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>Donar
+    </button>
+
+    <button type="button" class="btn btn-sm btn-warning" ng-show="empresa && !donacion">
+        <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>Ya dono
     </button>
 
 </div>

@@ -10,7 +10,10 @@
             scope: {
                 titulo: '@',
                 fecha: '@',
-                descripcion: '@'
+                descripcion: '@',
+                asistiendo: '=',
+                empresa: '=',
+                donacion: '='
             }
         }
     }
