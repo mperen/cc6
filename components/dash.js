@@ -9,3 +9,5 @@ require('./controllers/navbarController');
 require('./controllers/buscadorController');
 require('./controllers/misEventosController');
 require('./controllers/profileController');
+
+require('./directives/eventDirective');
