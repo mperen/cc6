@@ -1,0 +1,12 @@
+<div>
+
+	<div>
+		<label>Eventos del Mes:</label> Evento
+	</div>
+{{eventosMesCtrl.name}}
+	<div ng-repeat="event in eventosMesCtrl.myEventos">
+		<event-directive titulo="{{event.nombreEvento}}" fecha="{{event.fechaEvento}}" asistiendo="false" donacion="false" descripcion="{{event.descripcionEvento}}"
+			donation-fn="dashCtrl.setEventId(id)" assist-event="dashCtrl.assist(event, user)" direccion="{{event.lugar}}" idEvento="{{event.idEvento}}"></event-directive>
+	</div>
+
+</div> 
