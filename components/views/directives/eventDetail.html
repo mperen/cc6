@@ -1,0 +1,37 @@
+<div class="evento"> 
+    <h2>{{evento}}</h2>
+    <br>
+    <div class="evento-detail">
+        <span>
+            {{fecha | date:'dd-MM-yyyy' }}
+        </span>
+        <br>
+        <span class="desc">
+            {{descripcion}}
+        </span>
+        <br><br>
+        <span class="desc">
+            {{lugar}}
+        </span>
+        <br><br>
+        
+        <button class="btn btn-info">
+            <span>
+                Ver asistentes
+            </span>
+        </button>
+        
+        <button class="btn btn-info">
+            <span>
+                Ver donaciones
+            </span>
+        </button>
+        
+        <button class="btn btn-danger" name="cancel">
+            <span>
+                Eliminar evento
+            </span>
+        </button>
+    </div>
+    
+</div>

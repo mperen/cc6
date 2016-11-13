@@ -199,6 +199,23 @@ module.exports = {
 
 
 
+    },
+
+    getSingleEvent: function (req, res) {
+
+        var idEvent = req.param("idEvent");
+
+        var query = 'SELECT idEvento, nombreEvento, fechaEvento, descripcionEvento, uid, lugar FROM evento WHERE idEvento = ' + idEvent;
+
+        Evento.query(query, function (err, result) {
+
+
+            if (err) res.negotiate(err);
+            console.log('RESULT', result);
+            res.json({ msg: 'Detalles de evento consultados exitosamente', eventos: result });
+
+        });
+
     }
 
 

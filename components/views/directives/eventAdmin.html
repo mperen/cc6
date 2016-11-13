@@ -1,0 +1,32 @@
+<div class="paper-event">
+	<h3>{{titulo}}</h3>
+	<br/>
+	<div class="row">
+
+		<form action="../eventDetailResult">
+			<input type="hidden" value="{{idEvent}}" name="idEvent">
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+			<ul>
+				<li><span class="glyphicon glyphicon-time" aria-hidden="true"></span>{{fecha | date:'dd-MM-yyyy'}}</li>
+				<li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>{{direccion}}</li>
+			</ul>
+		</div>
+
+
+
+
+		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 paper-event-description">
+			{{descripcion}}
+		</div>
+		
+	</div>
+
+	<input type="submit" value="Ver evento">
+
+	<a ui-sref="event-detail({ idEvento: idEvento })">Ver Evento</a>
+	<button class="btn btn-sm btn-info" ng-click="assistEvent({id: idEvento, user: eventCtrl.userId})">
+        <span class="glyphicon glyphicon-{{eventCtrl.glyphicon}}" >Ver Evento</span>
+    </button>
+	</form>
+
+</div>

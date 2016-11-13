@@ -16,3 +16,11 @@ require('./controllers/eventosMesController');
 require('./directives/eventDirective');
 
 require('./controllers/eventController');
+
+require('./controllers/allEventsController');
+
+require('./directives/allEvents');
+
+require('./controllers/eventDetailsController');
+
+require('./directives/eventDetailsDirective');
