@@ -2,16 +2,14 @@ require('../services/eventosServices');
 
 (function(){
 
-    angular.module('app')
-        .controller('eventDetailsController', mevFunc);
+angular.module('app')
+      .controller('eventDetailsController', ['getSingleEvent', '$routeParams', mevFunc]);
 
-   function mevFunc(getAllEvents,$scope, $stateParams){
-
+  function mevFunc(getSingleEvent,$routeParams){
+        console.log(typeof getSingleEvent)
         this.myEvents = [];
 
-        $scope.idEvent = $stateParams.idEvent;
-
-        var params = {idEvent:  $scope.idEvent}
+        var params = {idEvent:  $routeParams.idEvent}
 
         getSingleEvent.singleEvent(params)
             .then((result)=> {

@@ -22,7 +22,7 @@
         singleEvent.singleEvent = function (params) {
             return $http.post('/evento/getSingleEvent', params);
         }
-        return getSingleEvent;
+        return singleEvent;
     }
 
     function getAllEvents($http){

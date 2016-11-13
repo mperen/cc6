@@ -1,11 +1,8 @@
 <div>
 
-	<div>
-		<label>Detalle del Evento "  {{eventDetailsCtrl.nombreEvento}} "</label>
-	</div>
-	<div>
-		<event-details titulo="{{eventDetailsCtrl.nombreEvento}}" fecha="{{eventDetailsCtrl.fechaEvento}}" asistiendo="false" donacion="false" descripcion="{{eventDetailsCtrl.descripcionEvento}}"
-			donation-fn="dashCtrl.setEventId(id)" assist-event="dashCtrl.assist(event, user)" direccion="{{eventDetailsCtrl.lugar}}" idEvento="{{eventDetailsCtrl.idEvento}}"></event-details>
+	<div ng-repeat="event in eventDetailsCtrl.myEvents">
+		<event-details titulo="{{event.nombreEvento}}" fecha="{{event.fechaEvento}}" asistiendo="false" donacion="false" descripcion="{{event.descripcionEvento}}"
+			donation-fn="dashCtrl.setEventId(id)" assist-event="dashCtrl.assist(event, user)" direccion="{{event.lugar}}" idEvento="{{event.idEvento}}"></event-details>
 	</div>
 
 </div> 

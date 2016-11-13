@@ -20,12 +20,11 @@
                     templateUrl: "../views/admin.html"
                 })
 
-                .when("/eventDetails?idEvent",{
+                .when("/eventDetails/:idEvent?",{
                     templateUrl: "../views/dashboard/eventDetailResult.html",
                     controller: 'eventDetailsController',
                     controllerAs: 'eventDetailsCtrl'
                 })
-
 
 
         })

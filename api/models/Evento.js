@@ -22,6 +22,9 @@ module.exports = {
     },
     lugar: {
       type: 'string'
+    },
+      idEvento: {
+      type: 'string'
     }
   }
 };
