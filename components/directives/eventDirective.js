@@ -14,7 +14,7 @@
                 fecha: '@',
                 descripcion: '@',
                 direccion: '@',
-                idEvento: '@',
+                idEvent: '@',
                 asistiendo: '=',
                 donacion: '=',
                 donationFn: '&',

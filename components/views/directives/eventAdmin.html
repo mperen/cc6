@@ -8,7 +8,7 @@
 			<ul>
 				<li><span class="glyphicon glyphicon-time" aria-hidden="true"></span>{{fecha | date:'dd-MM-yyyy'}}</li>
 				<li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>{{direccion}}</li> aqui va la direcion
-				<li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>{{idEvento}}</li>
+				<li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>id: {{idEvento}}</li>
 			</ul>
 		</div>
 
@@ -20,11 +20,12 @@
 		</div>
 		
 	</div>
-
-	<a  ng-href="#/eventDetails/14">Ver todos los eventos</a>
-	<button class="btn btn-sm btn-info" ng-click="assistEvent({id: idEvento, user: eventCtrl.userId})">
+   
+	<a  ng-href='#/eventDetails/{{idEvento}}'>Ver todos los eventos</a>
+	
+	<!--<button class="btn btn-sm btn-info" ng-click="assistEvent({id: idEvento, user: eventCtrl.userId})">
         <span class="glyphicon glyphicon-{{eventCtrl.glyphicon}}" >Ver Evento</span>
-    </button>
+    </button> -->
 
 
 </div>

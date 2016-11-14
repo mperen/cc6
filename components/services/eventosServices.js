@@ -1,3 +1,5 @@
+var url = require("../constants/urls");
+
 (function(){
 
 
@@ -5,6 +7,8 @@
         .factory('getMonthlyEvents', getMonthlyEvents)
         .factory('getAllEvents', getAllEvents)
         .factory('getSingleEvent', getSingleEvent)
+        .factory('getSuscribedAttendants',getEventAttendees)
+        .factory('getDonaciones',getDonaciones)
         ;
 //el punto y coma hasta el final del ultimo factory
     function getMonthlyEvents($http) {
@@ -36,6 +40,21 @@
 
     }
 
-
+    function getEventAttendees($http){
+        var attendees = {};
+        
+        attendees.attendees = function(params){
+            return $http.post('/evento/getSuscribedAttendants', params)
+        }
+        return attendees;
+    }
+    
+    function getDonaciones($http){
+        var obj = {};
+        obj.getDonacion = function(pos,param){
+            return $http.post(url.donationUrl[pos]+'/Donacion/getAllDonacionesEvento',param);
+        }
+        return obj;
+    }
 
 })();

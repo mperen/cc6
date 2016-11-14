@@ -5,6 +5,9 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var http=require('http');
+var querystring=require('querystring');
+
 module.exports = {
 
     createEvent: function (req, res) {
@@ -16,6 +19,31 @@ module.exports = {
 
         var query = 'insert into evento(nombreEvento, fechaEvento, descripcionEvento, lugar, activo, uid) '
             + ' values("' + nombre + '", "' + fecha + '", "' + descripcion + '", "' + lugar + '", 1,'+ uid +')';
+
+       /*
+        var data = querystring.stringify(req.allParams());
+        var options = {
+            //host de mi compañero replica
+             host:'idngronk',
+            //nombre del controler createEvent
+            path:'/evento/createEvent',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Length': Buffer.byteLength(data)
+            }
+        };
+
+        var reqN = http.request(options, function(resp) {
+            resp.setEncoding('utf8');
+            resp.on('data', function (chunk) {
+                console.log("body: " + chunk);
+            });
+        });
+
+        reqN.write(data);
+        reqN.end();
+        */
 
         var select = ' select * from evento where nombreEvento = "' + nombre + '"';
 
@@ -89,7 +117,7 @@ module.exports = {
     getMyPastEvents: function(req, res){
 
         var uid = req.param("uid");
- a
+ 
         var query = 'SELECT e.idEvento, e.nombreEvento, e.fechaEvento, e.descripcionEvento, e.uid, e.lugar' + 
         'FROM eventos e' + 
         'JOIN asistencia a ON (e.idEvento = a.idEvento)' + 
@@ -108,12 +136,11 @@ module.exports = {
     //obtiene una lista de personas inscritas al evento sin importar si su asistencia fue confirmada
     getSuscribedAttendants: function(req, res){
 
-        var idEvent = req.param("idEvent");
+        console.log('PARAMS', req.allParams());
+        var idEvent = req.param("idEvento");
 
-        var query = 'SELECT u.Usuario ' + 
-        'FROM Usuario u' +
-        'JOIN Asistencia a ON (u.uid = a.idUsuario )' +
-        'WHERE a.idEvent = ' + idEvent;
+        var query = 'select usuario, correo, uid from Usuario JOIN asistencia ON uid=idUsuario where idEvento=' + idEvent;
+        console.log('QUERY', query);
     
             Evento.query(query, function (err, result) {
 

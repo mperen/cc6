@@ -24,3 +24,7 @@ require('./directives/allEvents');
 require('./controllers/eventDetailsController');
 
 require('./directives/eventDetailsDirective');
+
+require('./controllers/attendeesController');
+
+require('./directives/eventAttendeesDirective');

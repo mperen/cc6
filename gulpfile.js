@@ -4,6 +4,7 @@ var gulp            = require('gulp'),
     pump            = require('pump'),
     sass            = require('gulp-sass');
 
+
 //PARA INSERTAR EL SAILS.IO AL EJS
 gulp.task('sails', function(cb){
     pump([
@@ -12,6 +13,7 @@ gulp.task('sails', function(cb){
     ],
     cb);
 });
+
 
 gulp.task('angular', function(cb){
     pump([
@@ -22,30 +24,35 @@ gulp.task('angular', function(cb){
     cb);
 });
 
+
 gulp.task('views:watch', function(){
     return watch('./components/views/**/*.html', { ignoreInitial: false })
         .pipe(gulp.dest('.tmp/public/views'));
 })
 
-gulp.task('sass', function(cb) {
-    pump([
-        gulp.src('./assets/**/*.scss', {ignoreInitial: false}),
-        sass().on('error', sass.logError),
-        gulp.dest('.tmp/public/css')
-    ], cb);
+
+gulp.task('sass', function(){
+    return gulp.src('./assets/**/*.scss', {ignoreInitial: false})
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('.tmp/public/css'))
 });
 
+
+
+
 gulp.task('sass:watch', function(){
-    return watch('./assets/**/*.scss', ['sass']);
+    gulp.watch('./assets/**/*.scss', ['sass'])
 });
+
 
 gulp.task('material:css', function(cb){
     pump([
-        gulp.src(['./node_modules/bootstrap/dist/css/bootstrap.css', './node_modules/bootstrap/dist/css/bootstrap.css.map'], {ignoreInitial: false}),
+        gulp.src(['./node_modules/bootstrap/dist/css/bootstrap.css', './node_modules/bootstrap/dist/css/bootstrap.css.map', './node_modules/animate.css/animate.min.css'], {ignoreInitial: false}),
         gulp.dest('.tmp/public/css/styles')    
     ],
     cb);
 })
+
 
 gulp.task('material:js', function(cb){
     pump([
@@ -56,6 +63,29 @@ gulp.task('material:js', function(cb){
 })
 
 
+gulp.task('material:fonts', function(cb){
+    pump([
+        gulp.src(['./node_modules/bootstrap/dist/fonts/*'], {ignoreInitial: false}),
+        gulp.dest('.tmp/public/css/fonts')    
+    ],
+    cb);
+})
+
+
+gulp.task('images', function(cb){
+    pump([
+        gulp.src(['./assets/images/*', './node_modules/bootstrap/dist/css/bootstrap.css.map'], {ignoreInitial: false}),
+        gulp.dest('.tmp/public/images')    
+    ],
+    cb);
+})
+
+
+
+
+
 
 //MAIN TASK
-gulp.task('default', ['sails', 'sass', 'sass:watch', 'angular', 'views:watch', 'material:css', 'material:js']);
+gulp.task('default', ['sails', 'sass','sass:watch', 'angular', 'views:watch', 'material:css', 'material:js', 'images', 'material:fonts']);
+
+

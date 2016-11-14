@@ -1,5 +1,6 @@
 <div class="evento"> 
     <h2>Detalle del Evento " {{titulo}} "</h2>
+    ID: {{idEvento}}
     <br>
     <div class="evento-detail">
         <span>
@@ -14,13 +15,20 @@
             Direccion: {{direccion}}
         </span>
         <br><br>
+       
         
-        <button class="btn btn-info">
+        <a  ng-href='#/eventDetails/{{idEvento}}'>Ver donaciones</a>
+        
+        <a  ng-href='#/attendeesEvent/{{idEvento}}'>Ver asistentes</a>
+        
+        <a  ng-href='#/eventDetails/{{idEvento}}'>Eliminar evento</a>
+    <!--    
+         
+        <button class="btn btn-info" >
             <span>
                 Ver asistentes
             </span>
         </button>
-        
         <button class="btn btn-info">
             <span>
                 Ver donaciones
@@ -31,7 +39,7 @@
             <span>
                 Eliminar evento
             </span>
-        </button>
+        </button> -->
     </div>
     
 </div>

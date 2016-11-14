@@ -25,6 +25,11 @@
                     controller: 'eventDetailsController',
                     controllerAs: 'eventDetailsCtrl'
                 })
+                .when("/attendeesEvent/:idEvent?", {
+                    templateUrl: "../views/dashboard/attendeesEvent.html",
+                    controller: 'attendeesController',
+                    controllerAs: 'attendeesCtrl'
+                })
 
 
         })
