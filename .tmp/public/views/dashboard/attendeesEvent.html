@@ -1,0 +1,46 @@
+<div>
+    <h3>Lista de participantes para el evento</h3></h3>
+</div>
+
+<!--
+<div align="center"> 
+
+    <table class="table-bordered">
+        
+        <tr>
+            <td>Nombre</td>
+            <td>usuario</td>
+            <td>Accion</td>
+        </tr> 
+        
+        <tr ng-repeat="attendee in attendeesCtrl.myEvents ">
+            <td>{{attendee.usuario}}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>{{attendee.correo}}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+        </tr>
+         
+    </table>
+
+</div>
+-->
+
+<div class="container">
+    <div class="row col-md-6 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Usuario</th>
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="attendee in attendeesCtrl.myEvents ">
+            <td>{{attendee.usuario}}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>{{attendee.correo}}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td><a ng-ref="#/">Eliminar participante</a></td>
+        </tr>
+    </tbody>
+    </table>
+    </div>
+</div>

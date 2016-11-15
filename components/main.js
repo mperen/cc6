@@ -28,3 +28,5 @@ require('./directives/eventDetailsDirective');
 require('./controllers/attendeesController');
 
 require('./directives/eventAttendeesDirective');
+
+require('./controllers/eventDonationsController');

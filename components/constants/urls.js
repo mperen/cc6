@@ -6,7 +6,7 @@ var central_url = [
 
 
 var donation_url = [
-    'http://cf242554.ngrok.io/',
+    'http://cf242554.ngrok.io',
     'http://73d5ad4d.ngrok.io'
 ]
 

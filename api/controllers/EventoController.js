@@ -244,6 +244,20 @@ module.exports = {
         });
 
     }
+    
+    ,
+    
+    deleteParticipant : function(req,res){
+        var idEvent = req.param("idEvent");
+        var idParticipant = req.param("idUsuario");
+        var query =  'delete from asistencia where idUsuario='+idParticipant+' and idEvento='+idEvent;
+        Evento.query(query, function (err, result) {
+            if (err) res.negotiate(err);
+            console.log('RESULT', result);
+            res.json({ msg: 'participante eliminado exitosamente', eventos: result });
+
+        });
+    }
 
 
 

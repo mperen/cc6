@@ -1,0 +1,31 @@
+<div>
+    <h3>Lista de donaciones para el evento</h3></h3>
+</div>
+
+<div class="container">
+    <div class="row col-md-6 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+    <thead>
+        <tr>
+            <th>Donacion</th>
+            <th>Tipo</th>
+            <th>Cantidad</th>
+            <th>Moneda</th>
+            <th>Empresa </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="donation in donationsCtrl.myEvents">
+        {{donationsCtrl.myEvents}}
+            <td>{{donation.descripcion}}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>{{donation.nombreTipo}}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>{{donation.cantidad}}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>{{donation.moneda}}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>{{donation.idEmpresa}}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            
+        </tr>
+    </tbody>
+    </table>
+    </div>
+</div>

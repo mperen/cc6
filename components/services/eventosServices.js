@@ -53,7 +53,8 @@ var url = require("../constants/urls");
     function getDonaciones($http){
         var obj = {};
         obj.getDonacion = function(pos,params){
-            return $http.post(url.donationUrl[pos]+'/Donacion/getAllDonacionesEvento',param);
+            console.log('PARAMS', url.donationUrl[pos]+'/Donacion/getAllDonacionesEvento',params);
+            return $http.post(url.donationUrl[pos]+'/Donacion/getAllDonacionesEvento', params);
         }
         return obj;
     }
