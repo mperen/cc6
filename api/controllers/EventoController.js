@@ -20,11 +20,11 @@ module.exports = {
         var query = 'insert into evento(nombreEvento, fechaEvento, descripcionEvento, lugar, activo, uid) '
             + ' values("' + nombre + '", "' + fecha + '", "' + descripcion + '", "' + lugar + '", 1,'+ uid +')';
 
-       /*
+       /*INICIO*/
         var data = querystring.stringify(req.allParams());
         var options = {
             //host de mi compañero replica
-             host:'idngronk',
+             host: sails.config.url.REPLICATION,
             //nombre del controler createEvent
             path:'/evento/createEvent',
             method: 'POST',
@@ -43,7 +43,7 @@ module.exports = {
 
         reqN.write(data);
         reqN.end();
-        */
+        /*FINAL*/
 
         var select = ' select * from evento where nombreEvento = "' + nombre + '"';
 

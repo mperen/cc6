@@ -32982,6 +32982,10 @@
 	                    controller: 'eventDonationsController',
 	                    controllerAs: 'donationsCtrl'
 	                })
+	                .when("/login", {
+	                    templateUrl: "../views/login.view.html"
+	                })
+	
 	
 	        })
 	})();
