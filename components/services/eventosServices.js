@@ -9,6 +9,7 @@ var url = require("../constants/urls");
         .factory('getSingleEvent', getSingleEvent)
         .factory('getSuscribedAttendants',getEventAttendees)
         .factory('getDonaciones',getDonaciones)
+        .factory('deleteParticipant',deleteParticipant)
         ;
 //el punto y coma hasta el final del ultimo factory
     function getMonthlyEvents($http) {
@@ -51,10 +52,19 @@ var url = require("../constants/urls");
     
     function getDonaciones($http){
         var obj = {};
-        obj.getDonacion = function(pos,param){
+        obj.getDonacion = function(pos,params){
             return $http.post(url.donationUrl[pos]+'/Donacion/getAllDonacionesEvento',param);
         }
         return obj;
     }
+    
+    function deleteParticipant($http){
+        var obj = {}
+        obj.deleteParticipant = function(params){
+            return $http.post('/evento/deleteParticipant',params)
+        }
+        return obj;
+    }
+    
 
 })();

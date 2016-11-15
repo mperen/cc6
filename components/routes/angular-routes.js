@@ -30,7 +30,11 @@
                     controller: 'attendeesController',
                     controllerAs: 'attendeesCtrl'
                 })
-
+                .when("/eventDonations/:idEvent?", {
+                    templateUrl: "../views/dashboard/eventDonations.html",
+                    controller: 'eventDonationsController',
+                    controllerAs: 'donationsCtrl'
+                })
 
         })
 })();
